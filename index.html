@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Cuan.Affiliate_ - Link in Bio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ✅ FIX: Open Graph meta tags untuk preview link di WhatsApp/IG/dll -->
+    <meta property="og:title" content="@Cuan.Affiliate_ - Link in Bio">
+    <meta property="og:description" content="✨ Exploring beauty, fashion & gadgets ✨ Find all my favorite picks here!">
+    <meta property="og:image" content="profile-picture.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#ffb6c1">
+
+    <!-- ✅ FIX: Favicon emoji sederhana -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --bg-color: #fff0f5;
             --card-bg: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #666666;
+            --text-primary: #2d1b22;
+            --text-secondary: #8a6070;
             --accent-color: #ffb6c1;
-            --accent-hover: #ff99aa;
+            --accent-hover: #ff8fa3;
             --badge-bg: #ff6b81;
             --badge-text: #ffffff;
             --border-radius-lg: 20px;
-            --border-radius-md: 12px;
+            --border-radius-md: 14px;
             --border-radius-sm: 8px;
-            --shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+            --shadow: 0 4px 18px rgba(255, 140, 160, 0.18);
+            --shadow-hover: 0 8px 28px rgba(255, 140, 160, 0.32);
         }
 
         * {
@@ -31,8 +43,10 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7ebed;
+            font-family: 'DM Sans', sans-serif;
+            background-color: #f0dde3;
+            background-image: radial-gradient(circle at 20% 20%, rgba(255,182,193,0.3) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(255,160,180,0.2) 0%, transparent 50%);
             color: var(--text-primary);
             display: flex;
             justify-content: center;
@@ -44,19 +58,27 @@
             max-width: 500px;
             background-color: var(--bg-color);
             min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-            padding: 32px 24px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.08);
+            padding: 36px 24px 48px;
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
+        /* ── Profile ── */
         .profile-section {
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            animation: fadeDown 0.5s ease both;
+        }
+
+        .profile-pic-wrapper {
+            position: relative;
+            width: 110px;
+            height: 110px;
         }
 
         .profile-pic {
@@ -66,69 +88,200 @@
             object-fit: cover;
             border: 4px solid #ffffff;
             box-shadow: var(--shadow);
+            /* ✅ FIX: fallback kalau gambar tidak ada */
+            background: linear-gradient(135deg, #ffb6c1, #ff8fa3);
+        }
+
+        /* ✅ FIX: fallback avatar text kalau gambar gagal load */
+        .profile-pic-wrapper::after {
+            content: "CA";
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffb6c1, #ff6b81);
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: -1;
         }
 
         .profile-name {
+            font-family: 'Playfair Display', serif;
             font-size: 22px;
             font-weight: 700;
+            color: var(--text-primary);
         }
 
         .profile-bio {
             font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        /* ── Social ── */
+        .social-section {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            animation: fadeDown 0.5s 0.1s ease both;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background-color: #fff;
+            color: #d6607a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(255, 182, 193, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 140, 160, 0.45);
+        }
+
+        /* ── Search ── */
+        .search-container {
+            position: relative;
+            animation: fadeDown 0.5s 0.15s ease both;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #c9909e;
+            font-size: 14px;
+            pointer-events: none;
         }
 
         .search-input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 14px 16px 14px 40px;
             border-radius: var(--border-radius-lg);
-            border: none;
-            font-family: 'Inter', sans-serif;
+            border: 2px solid transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            background: #fff;
             box-shadow: var(--shadow);
             outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .search-input:focus {
-            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.6);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.45);
         }
 
+        /* ── Categories ── */
         .categories-container {
             display: flex;
             overflow-x: auto;
-            gap: 10px;
-            padding-bottom: 8px;
+            gap: 8px;
+            padding-bottom: 4px;
             scrollbar-width: none;
+            animation: fadeDown 0.5s 0.2s ease both;
         }
 
-        .categories-container::-webkit-scrollbar {
-            display: none;
-        }
+        .categories-container::-webkit-scrollbar { display: none; }
 
         .category-btn {
-            padding: 10px 18px;
+            padding: 9px 18px;
             border-radius: var(--border-radius-lg);
-            border: none;
+            border: 2px solid transparent;
             background-color: #ffffff;
-            font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
             cursor: pointer;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
-            transition: 0.3s;
+            box-shadow: 0 2px 8px rgba(255, 182, 193, 0.18);
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .category-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--text-primary);
         }
 
         .category-btn.active {
             background-color: var(--accent-color);
             color: #fff;
-            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+            box-shadow: 0 4px 14px rgba(255, 143, 163, 0.4);
         }
 
+        /* ✅ FIX: badge jumlah produk per kategori */
+        .category-count {
+            display: inline-block;
+            background: rgba(255,255,255,0.35);
+            border-radius: 20px;
+            padding: 0 6px;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+
+        .category-btn.active .category-count {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* ── Products ── */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px;
         }
 
+        /* ✅ FIX: Skeleton loader */
+        .skeleton-card {
+            background: #fff;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .skeleton-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: linear-gradient(90deg, #fce8ed 25%, #ffd6de 50%, #fce8ed 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+        }
+
+        .skeleton-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skeleton-line {
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #fce8ed 25%, #ffd6de 50%, #fce8ed 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+        }
+
+        .skeleton-line.short { width: 60%; }
+        .skeleton-btn { height: 36px; border-radius: var(--border-radius-sm); margin-top: 4px; }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── Product cards ── */
         .product-card {
             background-color: var(--card-bg);
             border-radius: var(--border-radius-md);
@@ -137,10 +290,14 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            /* ✅ FIX: transition ditambahkan agar hover smooth */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            animation: fadeIn 0.35s ease both;
         }
 
         .product-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .product-badge {
@@ -149,18 +306,19 @@
             left: 8px;
             background-color: var(--badge-bg);
             color: var(--badge-text);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
-            padding: 4px 8px;
+            padding: 3px 8px;
             border-radius: var(--border-radius-sm);
             z-index: 1;
+            letter-spacing: 0.3px;
         }
 
         .product-image {
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
-            background-color: #fce8ed;
+            background: linear-gradient(135deg, #fce8ed, #ffd6de);
         }
 
         .product-info {
@@ -172,14 +330,15 @@
         }
 
         .product-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             flex-grow: 1;
-            line-height: 1.3;
+            line-height: 1.4;
+            color: var(--text-primary);
         }
 
         .checkout-btn {
@@ -189,43 +348,56 @@
             border: none;
             background-color: var(--accent-color);
             color: #ffffff;
-            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
             font-size: 13px;
             cursor: pointer;
             text-decoration: none;
             text-align: center;
             display: block;
+            transition: background-color 0.2s ease, transform 0.1s ease;
         }
 
         .checkout-btn:hover {
             background-color: var(--accent-hover);
         }
 
+        .checkout-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* ── Empty state ── */
         .no-results {
             grid-column: span 2;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             display: none;
-        }
-
-        .social-section {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            background-color: #ffb6c1;
-            color: #be185d;
-            border-radius: 50%;
-            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+            gap: 8px;
+        }
+
+        .no-results-emoji { font-size: 36px; }
+        .no-results-text { font-weight: 600; color: var(--text-primary); }
+        .no-results-sub { font-size: 13px; color: var(--text-secondary); }
+
+        /* ── Animations ── */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #c9909e;
+            padding-top: 8px;
         }
     </style>
 </head>
@@ -233,33 +405,73 @@
 <body>
 
     <div class="mobile-container">
+
+        <!-- Profile -->
         <div class="profile-section">
-            <img src="profile-picture.png" alt="Profile" class="profile-pic">
+            <div class="profile-pic-wrapper">
+                <img src="profile-picture.png" alt="Profile"
+                     class="profile-pic"
+                     onerror="this.style.opacity='0'">
+            </div>
             <div class="profile-name">@cuan.affiliate_</div>
-            <div class="profile-bio">✨ Exploring beauty, fashion & gadgets ✨<br>Find all my favorite picks below! 👇
+            <div class="profile-bio">
+                ✨ Exploring beauty, fashion & gadgets ✨<br>
+                Find all my favorite picks below! 👇
             </div>
         </div>
 
+        <!-- Social -->
+        <!-- ⚠️ GANTI href="#" dengan URL akun kamu sebelum deploy -->
         <div class="social-section">
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-tiktok"></i></a>
-            <a href="#" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" target="_blank" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
 
+        <!-- Search -->
         <div class="search-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="Search by name or ID...">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Cari produk atau ID...">
         </div>
 
+        <!-- Categories -->
         <div class="categories-container" id="categoryContainer"></div>
 
+        <!-- Products -->
         <div class="products-grid" id="productsGrid">
-            <div class="no-results" id="noResults">No products found.</div>
+            <!-- Skeleton loader tampil saat data belum siap -->
+            <div class="skeleton-card" id="skeleton1">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line skeleton-btn"></div>
+                </div>
+            </div>
+            <div class="skeleton-card" id="skeleton2">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line skeleton-btn"></div>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">
+                <div class="no-results-emoji">🔍</div>
+                <div class="no-results-text">Produk tidak ditemukan</div>
+                <div class="no-results-sub">Coba kata kunci lain</div>
+            </div>
         </div>
+
+        <div class="footer">Made with 💗 by @cuan.affiliate_</div>
+
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <script>
+        let allProducts = [];
         let categories = ["All"];
         let activeCategory = "All";
         let searchQuery = "";
@@ -269,17 +481,18 @@
         const searchInput = document.getElementById("searchInput");
         const noResults = document.getElementById("noResults");
 
-        function renderCategories() {
-            if (typeof products !== 'undefined' && products.length > 0) {
-                const uniqueCats = new Set(products.map(p => p.category));
-                categories = ["All", ...uniqueCats];
-            }
+        // ✅ FIX: Hitung jumlah produk per kategori
+        function getCategoryCount(cat) {
+            if (cat === "All") return allProducts.length;
+            return allProducts.filter(p => p.category === cat).length;
+        }
 
+        function renderCategories() {
             categoryContainer.innerHTML = "";
             categories.forEach(cat => {
                 const btn = document.createElement("button");
                 btn.className = `category-btn ${cat === activeCategory ? "active" : ""}`;
-                btn.textContent = cat;
+                btn.innerHTML = `${cat} <span class="category-count">${getCategoryCount(cat)}</span>`;
                 btn.onclick = () => {
                     activeCategory = cat;
                     renderCategories();
@@ -289,36 +502,69 @@
             });
         }
 
-        function renderProducts(dataArray) {
-            const dataToRender = dataArray || (typeof products !== 'undefined' ? products : []);
+        function renderProducts() {
+            // Hapus skeleton
+            const s1 = document.getElementById("skeleton1");
+            const s2 = document.getElementById("skeleton2");
+            if (s1) s1.remove();
+            if (s2) s2.remove();
 
-            const existingCards = productsGrid.querySelectorAll('.product-card');
-            existingCards.forEach(card => card.remove());
+            // Hapus product card lama
+            productsGrid.querySelectorAll('.product-card').forEach(c => c.remove());
 
-            const filteredProducts = dataToRender.filter(product => {
+            const filtered = allProducts.filter(product => {
                 const matchCategory = activeCategory === "All" || product.category === activeCategory;
-                const searchLower = searchQuery.toLowerCase();
-                const matchSearch = product.title.toLowerCase().includes(searchLower) || product.id.toString().includes(searchLower);
+                const q = searchQuery.toLowerCase();
+                const matchSearch = product.title.toLowerCase().includes(q) ||
+                                    String(product.id).includes(q);
                 return matchCategory && matchSearch;
             });
 
-            if (filteredProducts.length === 0) {
-                noResults.style.display = "block";
+            if (filtered.length === 0) {
+                noResults.style.display = "flex";
             } else {
                 noResults.style.display = "none";
-                filteredProducts.forEach(product => {
+                filtered.forEach((product, i) => {
                     const card = document.createElement("div");
                     card.className = "product-card";
+                    card.style.animationDelay = `${i * 0.05}s`;
                     card.innerHTML = `
-                    <div class="product-badge">#${product.id}</div>
-                    <img src="${product.img}" alt="${product.title}" class="product-image" loading="lazy">
-                    <div class="product-info">
-                        <div class="product-title">${product.title}</div>
-                        <a href="${product.link}" target="_blank" rel="noopener noreferrer" class="checkout-btn">Checkout 🛒</a>
-                    </div>`;
+                        <div class="product-badge">#${product.id}</div>
+                        <img src="${product.img}"
+                             alt="${product.title}"
+                             class="product-image"
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23fce8ed%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 text-anchor=%22middle%22 font-size=%2230%22>🛍️</text></svg>'">
+                        <div class="product-info">
+                            <div class="product-title">${product.title}</div>
+                            <a href="${product.link}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="checkout-btn">Checkout 🛒</a>
+                        </div>`;
                     productsGrid.insertBefore(card, noResults);
                 });
             }
+        }
+
+        function initData(data) {
+            // ✅ FIX: Validasi data & handle duplikat ID
+            const seen = new Set();
+            allProducts = data.filter(p => {
+                if (!p.id || !p.title || !p.link) return false;
+                if (seen.has(p.id)) {
+                    console.warn(`Duplikat ID ditemukan: ${p.id}, dilewati.`);
+                    return false;
+                }
+                seen.add(p.id);
+                return true;
+            });
+
+            const uniqueCats = new Set(allProducts.map(p => p.category).filter(Boolean));
+            categories = ["All", ...uniqueCats];
+
+            renderCategories();
+            renderProducts();
         }
 
         searchInput.addEventListener("input", (e) => {
@@ -327,7 +573,25 @@
         });
     </script>
 
-    <script src="data.js"></script>
-</body>
+    <!-- 
+        data.js harus mendefinisikan variabel `products` lalu memanggil initData(products).
+        Contoh isi data.js:
 
+        const products = [
+          { id: 1, title: "Serum Vitamin C", category: "Skincare", img: "https://...", link: "https://..." },
+          { id: 2, title: "Lipstik Matte", category: "Makeup", img: "https://...", link: "https://..." },
+        ];
+        initData(products);
+    -->
+    <script src="data.js" onerror="
+        console.warn('data.js tidak ditemukan, menampilkan data contoh.');
+        initData([
+            { id: 1, title: 'Serum Vitamin C Glow', category: 'Skincare', img: '', link: '#' },
+            { id: 2, title: 'Lipstik Matte Tahan Lama', category: 'Makeup', img: '', link: '#' },
+            { id: 3, title: 'Toner Hydrating Rose', category: 'Skincare', img: '', link: '#' },
+            { id: 4, title: 'Eyeshadow Palette Shimmer', category: 'Makeup', img: '', link: '#' },
+        ]);
+    "></script>
+
+</body>
 </html>
