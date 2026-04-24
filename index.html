@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Cuan.Affiliate_ - Link in Bio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S3R4KDTEN9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S3R4KDTEN9');
+    </script>
+
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'YOUR_PIXEL_ID');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --card-bg: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --accent-color: #ffb6c1;
+            --accent-hover: #ff99aa;
+            --badge-bg: #ff6b81;
+            --badge-text: #ffffff;
+            --border-radius-lg: 20px;
+            --border-radius-md: 12px;
+            --border-radius-sm: 8px;
+            --shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7ebed;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .mobile-container {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .profile-section {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-pic {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .profile-bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: var(--border-radius-lg);
+            border: none;
+            outline: none;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            box-shadow: var(--shadow);
+            background-color: #ffffff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.6);
+        }
+
+        .search-input::placeholder {
+            color: #aaa;
+        }
+
+        .categories-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 8px;
+            scrollbar-width: none;
+        }
+
+        .categories-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-btn {
+            padding: 10px 18px;
+            border-radius: var(--border-radius-lg);
+            border: none;
+            background-color: #ffffff;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(255, 182, 193, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .category-btn.active {
+            background-color: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.4);
+        }
+
+        .category-btn:hover:not(.active) {
+            background-color: #fffafb;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: var(--border-radius-sm);
+            z-index: 1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            background-color: #fce8ed;
+        }
+
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex-grow: 1;
+            line-height: 1.3;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 10px 0;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: block;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--accent-hover);
+            box-shadow: 0 2px 8px rgba(255, 153, 170, 0.4);
+        }
+
+        .no-results {
+            grid-column: span 2;
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            display: none;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: var(--border-radius-md);
+        }
+
+        .social-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #ffb6c1;
+            color: #be185d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(255, 182, 193, 0.4);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.15);
+            background-color: #be185d;
+            color: #ffffff;
+            box-shadow: 0 6px 15px rgba(190, 24, 93, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobile-container">
+        <div class="profile-section">
+            <img src="profile-picture.png" alt="Profile Picture" class="profile-pic">
+            <div class="profile-name">@cuan.affiliate_</div>
+            <div class="profile-bio">✨ Exploring beauty, fashion & gadgets ✨<br>Find all my favorite picks below! 👇
+            </div>
+        </div>
+
+        <div class="social-section">
+            <a href="https://www.instagram.com/cuan.affiliate_/" target="_blank" rel="noopener noreferrer"
+                class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@your_username_here" target="_blank" rel="noopener noreferrer"
+                class="social-icon" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@your_username_here" target="_blank" rel="noopener noreferrer"
+                class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by name or ID (e.g., 102)...">
+        </div>
+
+        <div class="categories-container" id="categoryContainer">
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <div class="no-results" id="noResults">No products found for your search.</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <script>
+        let categories = ["All"];
+        let activeCategory = "All";
+        let searchQuery = "";
+
+        const categoryContainer = document.getElementById("categoryContainer");
+        const productsGrid = document.getElementById("productsGrid");
+        const searchInput = document.getElementById("searchInput");
+        const noResults = document.getElementById("noResults");
+
+        function renderCategories() {
+            if (typeof products !== 'undefined' && products.length > 0) {
+                const uniqueCats = new Set(products.map(p => p.category));
+                categories = ["All", ...uniqueCats];
+            }
+
+            categoryContainer.innerHTML = "";
+            categories.forEach(cat => {
+                const btn = document.createElement("button");
+                btn.className = `category-btn ${cat === activeCategory ? "active" : ""}`;
+                btn.textContent = cat;
+                btn.onclick = () => {
+                    activeCategory = cat;
+                    renderCategories();
+                    renderProducts();
+                };
+                categoryContainer.appendChild(btn);
+            });
+        }
+
+        function renderProducts(dataArray) {
+            const dataToRender = dataArray || (typeof products !== 'undefined' ? products : []);
+            const existingCards = productsGrid.querySelectorAll('.product-card');
+            existingCards.forEach(card => card.remove());
+
+            const filteredProducts = dataToRender.filter(product => {
+                const matchCategory = activeCategory === "All" || product.category === activeCategory;
+                const searchLower = searchQuery.toLowerCase();
+                const matchSearch = product.title.toLowerCase().includes(searchLower) ||
+                    product.id.toString().includes(searchLower);
+                return matchCategory && matchSearch;
+            });
+
+            if (filteredProducts.length === 0) {
+                noResults.style.display = "block";
+            } else {
+                noResults.style.display = "none";
+                filteredProducts.forEach(product => {
+                    const card = document.createElement("div");
+                    card.className = "product-card";
+                    card.innerHTML = `
+                    <div class="product-badge">#${product.id}</div>
+                    <img src="${product.img}" alt="${product.title}" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <div class="product-title">${product.title}</div>
+                        <a href="${product.link}" target="_blank" rel="noopener noreferrer" class="checkout-btn">Checkout 🛒</a>
+                    </div>
+                `;
+                    productsGrid.insertBefore(card, noResults);
+                });
+            }
+        }
+
+        searchInput.addEventListener("input", (e) => {
+            searchQuery = e.
