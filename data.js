@@ -1,19 +1,17 @@
 let products = [];
-// Link CSV sempurna milikmu
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRtU_jHhHzk1k2GXDjF45NIezpuPlWdv00wU9Ux0O1NMtOElGOdJDBdGPVPaRRWlBH-gTNfF-tpaUcV/pub?gid=0&single=true&output=csv';
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRtU_jHhHzk1k2GXDjF45NIezpuPlWdv00wU9Ux0O1NMtOElGOdJDBdGPVPaRRWlBH-gTNfF-tpaUcV/pub?output=csv';
 
 function initData() {
-    // Jurus Cache Buster: Memaksa browser mengambil data terbaru setiap detik
     const fetchUrl = sheetUrl + '&nocache=' + new Date().getTime();
 
     Papa.parse(fetchUrl, {
         download: true,
         header: true,
         complete: function (results) {
-            // Satpam Data: Hanya loloskan baris yang punya ID dan Title (mencegah error baris kosong)
+            // Satpam Data: Cegah baris kosong masuk
             products = results.data.filter(row => row.id && row.title && row.title.trim() !== "");
 
-            // Mengirim data terbaru ke layar
+            // Perintah render ke layar HTML
             if (typeof renderCategories === 'function') {
                 renderCategories();
             }
@@ -27,5 +25,5 @@ function initData() {
     });
 }
 
-// Menjalankan proses saat website dibuka
+// Jalankan saat file dipanggil
 initData();
