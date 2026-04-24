@@ -14,9 +14,12 @@
     <meta name="theme-color" content="#ffb6c1">
 
     <!-- ✅ FIX: Favicon emoji sederhana -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -45,8 +48,8 @@
         body {
             font-family: 'DM Sans', sans-serif;
             background-color: #f0dde3;
-            background-image: radial-gradient(circle at 20% 20%, rgba(255,182,193,0.3) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(255,160,180,0.2) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 20% 20%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 160, 180, 0.2) 0%, transparent 50%);
             color: var(--text-primary);
             display: flex;
             justify-content: center;
@@ -191,12 +194,18 @@
             padding-bottom: 4px;
             scrollbar-width: none;
             animation: fadeDown 0.5s 0.2s ease both;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scroll-snap-type: x proximity;
         }
 
-        .categories-container::-webkit-scrollbar { display: none; }
+        .categories-container::-webkit-scrollbar {
+            display: none;
+        }
 
         .category-btn {
             padding: 9px 18px;
+            scroll-snap-align: start;
             border-radius: var(--border-radius-lg);
             border: 2px solid transparent;
             background-color: #ffffff;
@@ -224,7 +233,7 @@
         /* ✅ FIX: badge jumlah produk per kategori */
         .category-count {
             display: inline-block;
-            background: rgba(255,255,255,0.35);
+            background: rgba(255, 255, 255, 0.35);
             border-radius: 20px;
             padding: 0 6px;
             font-size: 11px;
@@ -232,7 +241,7 @@
         }
 
         .category-btn.active .category-count {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* ── Products ── */
@@ -273,12 +282,24 @@
             animation: shimmer 1.4s infinite;
         }
 
-        .skeleton-line.short { width: 60%; }
-        .skeleton-btn { height: 36px; border-radius: var(--border-radius-sm); margin-top: 4px; }
+        .skeleton-line.short {
+            width: 60%;
+        }
+
+        .skeleton-btn {
+            height: 36px;
+            border-radius: var(--border-radius-sm);
+            margin-top: 4px;
+        }
 
         @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         /* ── Product cards ── */
@@ -377,19 +398,43 @@
             gap: 8px;
         }
 
-        .no-results-emoji { font-size: 36px; }
-        .no-results-text { font-weight: 600; color: var(--text-primary); }
-        .no-results-sub { font-size: 13px; color: var(--text-secondary); }
+        .no-results-emoji {
+            font-size: 36px;
+        }
+
+        .no-results-text {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .no-results-sub {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
 
         /* ── Animations ── */
         @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-12px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ── Footer ── */
@@ -409,9 +454,7 @@
         <!-- Profile -->
         <div class="profile-section">
             <div class="profile-pic-wrapper">
-                <img src="profile-picture.png" alt="Profile"
-                     class="profile-pic"
-                     onerror="this.style.opacity='0'">
+                <img src="profile-picture.png" alt="Profile" class="profile-pic" onerror="this.style.opacity='0'">
             </div>
             <div class="profile-name">@cuan.affiliate_</div>
             <div class="profile-bio">
@@ -516,7 +559,7 @@
                 const matchCategory = activeCategory === "All" || product.category === activeCategory;
                 const q = searchQuery.toLowerCase();
                 const matchSearch = product.title.toLowerCase().includes(q) ||
-                                    String(product.id).includes(q);
+                    String(product.id).includes(q);
                 return matchCategory && matchSearch;
             });
 
@@ -594,4 +637,5 @@
     "></script>
 
 </body>
+
 </html>
